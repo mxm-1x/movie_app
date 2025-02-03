@@ -42,13 +42,13 @@ const App = () => {
 
       const response = await fetch(endpoint, API_OPTIONS);
 
-      if (!response.ok) {
+      if(!response.ok) {
         throw new Error('Failed to fetch movies');
       }
 
       const data = await response.json();
 
-      if (data.Response === 'False') {
+      if(data.Response === 'False') {
         setErrorMessage(data.Error || 'Failed to fetch movies');
         setMovieList([]);
         return;
@@ -56,7 +56,7 @@ const App = () => {
 
       setMovieList(data.results || []);
 
-      if (query && data.results.length > 0) {
+      if(query && data.results.length > 0) {
         await updateSearchCount(query, data.results[0]);
       }
     } catch (error) {
@@ -87,7 +87,7 @@ const App = () => {
 
   return (
     <main>
-      <div className="pattern" />
+      <div className="pattern"/>
 
       <div className="wrapper">
         <header>
